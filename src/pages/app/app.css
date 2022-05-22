@@ -1,0 +1,27 @@
+section.app-page {
+  display: flex;
+  background-color: transparent;
+}
+
+.app-page .app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  color: white;
+}
+
+.app-page .app-content {
+  margin-top: 64px;
+  padding: 32px 64px;
+}
+
+.app-page header {
+  text-align: right;
+}
+
+.app-page header a {
+  display: inline-block;
+  margin: 0 12px;
+}
