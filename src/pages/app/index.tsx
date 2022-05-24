@@ -11,7 +11,7 @@ const Router = () => {
   const rootLocation = location.pathname.split('/')[2]
 
   return (
-    <AnimatePresence exitBeforeEnter>
+    <AnimatePresence exitBeforeEnter presenceAffectsLayout>
       <Switch key={rootLocation} location={location}>
         <Route exact path={path}>
           <DashboardPage />
