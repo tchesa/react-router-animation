@@ -1,9 +1,10 @@
 import Layout, { Content, Header } from "antd/lib/layout/layout"
 import { AnimatePresence } from "framer-motion"
-import { NavLink, Redirect, Route, Switch, useLocation, useRouteMatch } from "react-router-dom"
+import { NavLink, Redirect, Route, Switch, useHistory, useLocation, useRouteMatch } from "react-router-dom"
 import DashboardPage from "./dashboard"
 import SettingsPage from "./settings"
 import './app.css'
+import { LeftOutlined } from "@ant-design/icons"
 
 const Router = () => {
   const { path, url } = useRouteMatch()
@@ -31,9 +32,14 @@ const Router = () => {
 }
 
 const App = () => {
+  const history = useHistory()
+
   return (
     <Layout className="app-page">
       <Header className="app-header">
+        <button className="back-button" onClick={history.goBack}>
+          <LeftOutlined />
+        </button>
         <NavLink to="/app/dashboard">Dashboard</NavLink>
         <NavLink to="/app/settings">Settings</NavLink>
       </Header>

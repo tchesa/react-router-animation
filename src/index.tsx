@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
+import { MemoryRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import LoginPage from './pages/login';
 import AppPage from './pages/app';
 import './index.css';

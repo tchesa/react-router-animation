@@ -25,3 +25,15 @@ section.app-page {
   display: inline-block;
   margin: 0 12px;
 }
+
+.app-page .app-header .back-button {
+  color: white;
+  background-color: transparent;
+  font-size: 26px;
+  line-height: 100%;
+  padding: 8px;
+  position: absolute;
+  left: 50px;
+  top: 9px;
+  border: 0 none;
+}
