@@ -2,51 +2,39 @@ import { motion, Transition, Variants } from 'framer-motion'
 import { ReactNode } from 'react'
 import { useHistory } from 'react-router-dom'
 
-const forwardAnimation: Variants = {
-  initial: {
-    // opacity: 0,
-    x: "100%",
-  },
-  animate: {
-    // opacity: 1,
-    x: 0,
-  },
-  exit: {
-    // opacity: 0,
-    x: "-100%"
-  }
-}
-
-const backwardAnimation: Variants = {
-  initial: {
-    // opacity: 0,
-    x: "-100%",
-  },
-  animate: {
-    // opacity: 1,
-    x: 0,
-  },
-  exit: {
-    // opacity: 0,
-    x: "100%"
-  }
-}
-
 const transition: Transition = {
-  ease: "easeOut",
-  duration: .2
+  type: 'spring',
+  bounce: 0,
+  duration: 0.4,
 }
 
-const AnimatedPage = ({ children }: { children: ReactNode }) => {
+const variants: Variants = {
+  exit: (action: string) => {
+    return {
+      x: action === 'POP' ? '100%' : '-100%',
+      transition,
+    }
+  },
+
+  enter: () => {
+    return {
+      x: 0,
+      transition,
+    }
+  },
+}
+
+const AnimatedPage = ({ className, children }: { className?: string, children: ReactNode }) => {
   const { action } = useHistory()
 
   return (
     <motion.div
-      variants={action === 'POP' ? backwardAnimation : forwardAnimation}
-      initial="initial"
-      animate="animate"
+      initial={{ x: action === 'POP' ? '-100%' : '100%' }}
       exit="exit"
+      animate="enter"
+      variants={variants}
       transition={transition}
+      className={['animated-page', className].join(' ')}
     >
       <div style={{ border: '1px solid red' }}>
         {children}

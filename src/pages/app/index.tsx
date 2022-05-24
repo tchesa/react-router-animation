@@ -1,6 +1,6 @@
 import Layout, { Content, Header } from "antd/lib/layout/layout"
 import { AnimatePresence } from "framer-motion"
-import { NavLink, Redirect, Route, Switch, useLocation, useRouteMatch } from "react-router-dom"
+import { NavLink, Redirect, Route, Switch, useHistory, useLocation, useRouteMatch } from "react-router-dom"
 import DashboardPage from "./dashboard"
 import SettingsPage from "./settings"
 import './app.css'
@@ -9,9 +9,10 @@ const Router = () => {
   const { path, url } = useRouteMatch()
   const location = useLocation()
   const rootLocation = location.pathname.split('/')[2]
+  const { action } = useHistory()
 
   return (
-    <AnimatePresence exitBeforeEnter presenceAffectsLayout>
+    <AnimatePresence custom={action}>
       <Switch key={rootLocation} location={location}>
         <Route exact path={path}>
           <DashboardPage />
